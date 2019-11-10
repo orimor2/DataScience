@@ -82,6 +82,12 @@ summary(s2)
 
 s3 <- c("I","love","data","science")
 
+s10 <- c("x1","x2","x3","x4")
+
+s11 <- paste("y",paste(s10,collapse="+"),sep = "~")
+
+
+
 s4 <- paste(s1,collapse=" ")
 s4
 class(s4)
@@ -135,6 +141,33 @@ round(pi,4)
 ceiling(pi)
 floor(pi)
 
+ds = iris
+ds
+summary(ds)
+
+min(ds$Sepal.Length)
+max(ds$Sepal.Width)
+mean(ds$Petal.Length)
+sd(ds$Petal.Width)
+
+ds1 = mtcars
+ds1
+sqrt(ds1$mpg)
+log(ds1$disp)
+sqrt(ds1$wt^3)
+
+s12 <- paste("age","gender","height","weight",sep="+")
+s13 <- paste(s12,collapse="+")
+s13
+
+m1 <- matrix(c(4,7,-8,3,0,-2,1,-5,12,-3,6,9),ncol = 4)
+m1
+summary(m1)
+
+mean(m1)
+rowMeans(m1)
+colMeans(m1)
+
 ##############################################################
 ###   SYSTEM FUNCTIONS
 ##############################################################
@@ -180,6 +213,11 @@ for (n in 1:4) {
 
 runif(n=10, min=0, max=1)  ## 10 random numbers between 0 and 1
 runif(n=5, min=-3, max=3)  ## 3 random numbers between -3 and 3
+
+x <- round(runif(n=5, min=1, max=10),0)
+if( x = 8 ) 
+  break()
+
 
 ## normal distribution
 rnorm(n=10, mean=5, sd=2)
@@ -285,6 +323,9 @@ m1 == m2
 
 ### generate a list of vectors containing letters repeated 4 times each 
 mapply(rep, LETTERS[1:6], 4, SIMPLIFY = FALSE)
+
+mapply(rep, LETTERS[1:26], decreasing = TRUE)
+
 
 ### what will this generate?
 mapply(rep, LETTERS[1:6], 6:1, SIMPLIFY = FALSE)
