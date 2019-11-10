@@ -105,7 +105,7 @@ v7 <- 12:24
 v7
 
 # numeric sequence incremented by a specific number
-v8 <- seq(from=10, to=100, by=5)
+v8 <- seq(from=10, to=100, by=1)
 v8
 v8 <- seq(10,100,5)
 v8
@@ -115,6 +115,7 @@ v9 <- letters
 v10 <- LETTERS
 v9[5]
 v10[1:3]
+v10[c(5,15)]
 
 length(v10)
 v10[seq(1,26,3)]
@@ -190,7 +191,7 @@ m1 + t(m1)
 m1 - t(m1)
 
 m1 + m2 ## doesn't work
-m1 + as.vector(m2) ## doesn't work
+m1 + as.vector(m2) 
 
 
 ## Multiplication/Division
@@ -443,4 +444,14 @@ guys <- data.frame(name = names.vec,
 print(guys)
 summary(guys)
 str(guys)
+ datasets::mtcars
+
+ RANK1 <- c(1,2,3,4,5)
+ PEAK <- c(1,1,3,4,3)
+ TITLE1 <- c("avatar","titanic","star wars","avengers","jussica")
+ WORLDWIDE <- c(2787,2187,2068,1844,1671)
+ YEAR <- c(2009,1997,2015,2018,20158)
+ df <- data.frame(RANK1,PEAK,TITLE1,WORLDWIDE,YEAR)
+ 
+ View(df)
  
