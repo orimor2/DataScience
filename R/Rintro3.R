@@ -17,7 +17,7 @@ class(iris2)
 
 iris
 iris2
-
+head((iris2))
 #### selection of columns
 iris2 %>% select(Sepal.Length, Sepal.Width)
 
@@ -95,6 +95,21 @@ mysw <- starwars %>%
             nogender = sum(nogender, na.rm=TRUE),
             num_individuals=n()) %>%
   arrange(desc(num_individuals))
+ 
+
+
+nasa1<- as_data_frame(nasa)
+
+nasa1 %>% filter(lat > 29.56 & lat < 33.09 & long < -90.55 & long > -110.93)
+nasa1 %>% mutate(Ratio = surftemp/temperature)
+
+nasa1  %>% 
+  group_by(year) %>%
+  summarise(n_mean=mean(pressure,na.rm=T),
+  o_mean=mean(ozone,na.rm=T),
+ r_mean=mean(ratio,na.rm=T))
+
+
 
 
 ##############################
@@ -155,7 +170,7 @@ ggplot(data=iris3) +
   geom_point(mapping = aes(x = Sepal.ratio, y = Petal.ratio, col=Species)) +
   facet_grid(round(Sepal.Length,0) ~ round(Petal.Length,0))
 
-########### Combining two geometric objects into one graph
+ ########### Combining two geometric objects into one graph
 
 ggplot(data=iris3) +
   geom_point(mapping = aes(x = Sepal.ratio, y = Petal.ratio)) 
