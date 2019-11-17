@@ -281,6 +281,7 @@ grep("a", c("abc", "def", "cba a", "aa"), value=FALSE)  ### return indices
 grep("a", c("abc", "def", "cba a", "aa"), value=TRUE)   ### return values
 
 head(colours())
+length(colors())  
 grep("orange",colours())
 grep("orange",colours(),value=T)
 
@@ -300,7 +301,7 @@ grep("^red[2-4]",colours(),value=T) ## [] -> begins with red and has a number be
 grep("^red[2:4]|^blue[2:4]",colours(),value=T)  
 
 grep("2|4",colours()[100:150],value=T)  
-grep("[24]",colours()[100:150],value=T)  
+grep("[2-4]",colours()[100:150],value=T)  
 
 grep("^[dl].*2$",colours(),value=T)  ## all strings beginin with d or l and ending with 2
 
@@ -332,6 +333,7 @@ strsplit(c("The boy is playing with his car, his father is talking on the phone"
 ### separating by a point
 strsplit(c("The boy is playing with his car. His father is talking on the phone"),split='\\.')
 
+strsplit(c("The boy is playing with his car. His father is talking on the phone"),split='.')
 
 ####################################################
 ############   Functions
@@ -469,9 +471,11 @@ class(mydata)
 str(mydata)
 
 ####### Excel
+install.packages(rJava)
+
 library(xlsx)
 df1 <- read.xlsx("excel-example.xlsx",sheetIndex = 1)
-df2 <- read.xlsx("excel-example.xlsx",sheetIndex = 2)
+df2 <- read.xlsx("excel-example.xlsx",sheetIndex = 2,endRow = 9)
 
 ### Write a data.frame to an excel file
 write.xlsx(df1, "one-sheet-example.xlsx", sheetName="Data Frame")
@@ -579,7 +583,10 @@ json_df <- as.data.frame(json_data)
 
 #### To be able to query the database we need to create a new ODBC DNS on the windows computer
 
-
+library(DBI)
+con <- dbConnect(odbc::odbc(), .connection_string = "Driver={ODBC Driver 17 for SQL Server};server=192.168.1.1;
+uid=dsuser03;
+pwd=DSuser03!;")
 library(DBI)
 con <- dbConnect(odbc::odbc(), "tcds")
 sql <- "SELECT * FROM acs2015_country_data"
