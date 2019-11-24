@@ -15,10 +15,19 @@ x4 <- mtcars$qsec
 
 MODE <- function(x) {
   freq <- table(x)
-  Xmo <- names(freq[1])
+  idx <- order(freq,decreasing = t)
+  Xmo <- names(freq[idx][1])
     return(Xmo)
 }
+x1
 
+mean(x1)
+
+mode(x1)
+median(x2)
+table(x1)
+
+names"x1"
 ### create a function that shows the median of a given vector. 
 
 MEDIAN <- function(x) {
